@@ -1,0 +1,105 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{
+	background-color: black;
+	color: white;
+	margin: 0;
+	overflow: hidden;
+	font-family: rosario;
+}
+
+/* Navbar */
+.navbar{
+	width: 120px;
+	background-color: #1F1F1F;
+	float: left;
+}
+.navbar-item{
+	width: 120px;
+	height: 120px;
+	background-color: #1F1F1F;
+	text-align: center;
+	padding-top: 8px;
+}
+.navbar-item p{
+	font-size: 1.5em;
+	margin: 3px;
+}
+.navbar-item:hover{
+	background-color: black;
+}
+
+
+/* Home */
+.home-intro{
+	text-align: center;
+	color: white;
+	float: left;
+	display: flex;
+	align-items: center;
+}
+.home-intro p{
+	margin: auto;
+	font-size: 500%;
+}
+
+
+/* Contact */
+.contact{
+	float: left;
+	padding-left: 10%;
+}
+
+.contact h1{
+	font-size: 500%;
+	margin-bottom: 1%;
+}
+
+.contact hr{
+	background-color: white;
+	margin-bottom: 5%;
+	width: 400px;
+	float: left;
+}
+
+.contact .icon{
+	width: 55px;
+	height: 60px;
+	float: left;
+	clear: both;
+	display: flex;
+	align-items: center;
+}
+.contact .fa{
+	margin: auto;
+}
+.contact .fab{
+	margin: auto;
+}
+.contact p{
+	float: left;
+	margin-left: 50px;
+	font-size: 200%;
+	margin-top: 15px;
+}
+
+.contact a{
+	color: red;
+	text-decoration: none;
+}
+
+.contact .map{
+	width: 40%;
+	height: 200px;
+	float: right;
+	transform: translateY(-120%);
+	margin-right: 10%;
+}
+
+.contact #map{
+	color: red;
+}
+
+
+		
