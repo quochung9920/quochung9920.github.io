@@ -140,6 +140,8 @@ body{
 		justify-content: center;
 	}
 	.icon{
+		
+		width: 30%;
 		height: 75px;
 		font-size: 50%;
 		paddin-bottom: 0px;
