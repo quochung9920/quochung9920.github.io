@@ -150,7 +150,7 @@ body{
 	.icon p{display: none;}
 	.name{
 		font-size: 480%;
-		
+		text-align:center;
 	}
 	.contact .icon{
 		font-size: 1em;
