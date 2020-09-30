@@ -16,6 +16,7 @@
         $(document).ready(function(){
 
             $(".map").hide();
+            $(".contact").hide();
 
             $("div.nav-icon__item:first").click(function(){
                 $(".home").show();
@@ -30,6 +31,10 @@
 
             $(".icon:first").click(function(){
                 $(".map").show(1500);
+            });
+
+            $(".button__map").click(function(){
+                $(".map").hide(1500);
             });
         });
     </script>
