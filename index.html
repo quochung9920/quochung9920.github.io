@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="CSS/style.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+    
+    <title>Nguyễn Quốc Hưng</title>
+
+
+
+    <script>
+        $(document).ready(function(){
+
+            $(".map").hide();
+            $(".contact").hide();
+
+            $("div.nav-icon__item:first").click(function(){
+                $(".home").show();
+                $(".contact").hide();
+            });
+
+            $("div.nav-icon__item:nth-child(3)").click(function(){
+                $(".home").hide();
+                $(".contact").show();
+            });
+
+
+            $(".icon:first").click(function(){
+                $(".map").show(1500);
+            });
+
+            $(".button__map").click(function(){
+                $(".map").hide(1500);
+            });
+        });
+    </script>
+</head>
+<body>
+    
+    <div class="main" id="main">
+        <canvas id="canvas"></canvas>
+        <div class="nav">
+           <div class="nav-icon">
+                <div class="nav-icon__item">
+                    <i class="fa fa-home"></i>
+                    <p>HOME</p>
+                </div>
+                <div class="nav-icon__item">
+                    <i class="fa fa-user-secret"></i>
+                    <p>INFO</p>
+                </div>
+                <div class="nav-icon__item">
+                    <i class="fa fa-envelope"></i>
+                    <p>CONTACT</p>
+                </div>
+           </div>
+        </div>
+        <div class="home">
+            <p>NGUYỄN QUỐC HƯNG</p>
+        </div>
+
+
+        <div class="popup map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m12!1m8!1m3!1d5119.371659240893!2d106.67692819569197!3d10.79786015632798!3m2!1i1024!2i768!4f13.1!2m1!1zMTU1LzQgTmd1eeG7hW4gVHLhu41uZyBUdXnhu4NuLCBwaMaw4budbmcgOCwgUGjDuiBOaHXhuq1uLCBUaMOgbmggcGjhu5EgSOG7kyBDaMOtIE1pbmg!5e0!3m2!1svi!2sus!4v1601023865358!5m2!1svi!2sus"
+            width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            <button class="button button__map"><i class="fas fa-times"></i></button>
+        </div>
+
+        
+        <div class="contact">
+            <h1>Contact</h1>
+            <div class="contact__content">
+                
+                <div class="icon">
+                    <i class="fa fa-map-marked-alt"></i>
+                </div>
+                <p>Hoang Van Thu Street, Phu Nhuan District, HCM City</p>
+                <div class="icon">
+                    <a href="tel: 0918951429">
+                        <i class="fa fa-mobile-alt"></i>
+                    </a>
+                </div>
+                <p>Phone number: 0918951429</p>
+                <div class="icon">
+                    <a href="mailto: quochung9920@gmail.com">
+                        <i class="far fa-envelope"></i>
+                    </a>
+                </div>
+                <p>Gmail: quochung9920@gmail.com</p>
+                <div class="icon">
+                    <a href="https://facebook.com/qh0909" target="_blank">
+                        <i class="fa fa-facebook-f"></i>
+                    </a>
+                </div>
+                <p>Facebook: facebook.com/qh0909</p>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://kit.fontawesome.com/6db713aed6.js" crossorigin="anonymous"></script>
+    <script src="javascript/TweenLite.min.js"></script>
+    <script src="javascript/EasePack.min.js"></script>
+    <script src="javascript/background.js"></script>
+
+</body>
+</html>
