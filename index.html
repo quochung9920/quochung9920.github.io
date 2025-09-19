@@ -2,41 +2,781 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Trang chủ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nguyễn Quốc Hưng - Portfolio</title>
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
+  <!-- Custom CSS -->
   <style>
-    body {
+    :root {
+      --primary-color: #667eea;
+      --secondary-color: #764ba2;
+      --accent-color: #f093fb;
+      --dark-color: #2c3e50;
+      --light-color: #ecf0f1;
+      --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --gradient-accent: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      --shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    * {
       margin: 0;
       padding: 0;
-      background: linear-gradient(to right, #00c6ff, #0072ff);
-      color: white;
-      font-family: 'Segoe UI', sans-serif;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      color: var(--dark-color);
+      overflow-x: hidden;
+    }
+
+    /* Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Navigation */
+    .navbar {
+      transition: all 0.3s ease;
+      padding: 1rem 0;
+    }
+
+    .navbar.scrolled {
+      background: rgba(255, 255, 255, 0.95) !important;
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.5rem;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-link {
+      font-weight: 500;
+      color: var(--dark-color) !important;
+      margin: 0 0.5rem;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .nav-link:hover {
+      color: var(--primary-color) !important;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 50%;
+      background: var(--gradient-primary);
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      background: var(--gradient-primary);
       display: flex;
-      flex-direction: column;
-      justify-content: center;
       align-items: center;
-      height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="white" opacity="0.1"/><circle cx="80" cy="80" r="2" fill="white" opacity="0.1"/><circle cx="40" cy="60" r="1" fill="white" opacity="0.1"/><circle cx="90" cy="30" r="1" fill="white" opacity="0.1"/><circle cx="10" cy="90" r="1" fill="white" opacity="0.1"/></svg>');
+      animation: float 20s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+
+    .hero-content {
+      color: white;
+      z-index: 2;
+      position: relative;
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      opacity: 0;
+      animation: slideInUp 1s ease forwards 0.5s;
+    }
+
+    .hero .lead {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: slideInUp 1s ease forwards 0.7s;
+    }
+
+    .typing-text {
+      color: var(--accent-color);
+      font-weight: 600;
+    }
+
+    .btn-primary-custom {
+      background: var(--gradient-accent);
+      border: none;
+      padding: 12px 30px;
+      font-weight: 600;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      opacity: 0;
+      animation: slideInUp 1s ease forwards 0.9s;
+    }
+
+    .btn-primary-custom:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    }
+
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Section styling */
+    .section {
+      padding: 100px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 4rem;
+      position: relative;
+    }
+
+    .section-title h2 {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--dark-color);
+      margin-bottom: 1rem;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: var(--gradient-primary);
+      border-radius: 2px;
+    }
+
+    /* About section */
+    .about-img {
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease;
+    }
+
+    .about-img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Skills section */
+    .skill-card {
+      background: white;
+      border-radius: 15px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: var(--shadow);
+      transition: all 0.3s ease;
+      border: 1px solid #f8f9fa;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+
+    .skill-icon {
+      font-size: 3rem;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+    }
+
+    /* Projects section */
+    .project-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: all 0.3s ease;
+      border: 1px solid #f8f9fa;
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+
+    .project-img {
+      height: 200px;
+      background: var(--gradient-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 3rem;
+    }
+
+    .project-content {
+      padding: 1.5rem;
+    }
+
+    .tech-tag {
+      display: inline-block;
+      background: var(--gradient-primary);
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      margin: 0.25rem;
+    }
+
+    /* Contact section */
+    .contact {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    }
+
+    .contact-card {
+      background: white;
+      border-radius: 15px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: var(--shadow);
+      transition: all 0.3s ease;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .contact-icon {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--dark-color);
+      color: white;
+      padding: 3rem 0;
       text-align: center;
     }
-    h1 {
-      font-size: 3em;
-      margin: 0.2em;
+
+    .social-links a {
+      color: white;
+      font-size: 1.5rem;
+      margin: 0 1rem;
+      transition: all 0.3s ease;
     }
-    p {
-      font-size: 1.5em;
+
+    .social-links a:hover {
+      color: var(--accent-color);
+      transform: translateY(-3px);
     }
-    .domain {
-      background: rgba(255, 255, 255, 0.1);
-      padding: 10px 20px;
-      border-radius: 10px;
-      margin-top: 20px;
-      font-size: 1.2em;
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero .lead {
+        font-size: 1.2rem;
+      }
+      
+      .section-title h2 {
+        font-size: 2rem;
+      }
+      
+      .section {
+        padding: 60px 0;
+      }
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--gradient-primary);
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--secondary-color);
     }
   </style>
 </head>
 <body>
-  <h1>NGUYỄN QUỐC HƯNG</h1>
-  <p>Chào mừng bạn đến với domain này!</p>
-  <div class="domain">Domain: <strong>insightpassive.com</strong></div>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-transparent fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#home">Quốc Hưng</a>
+      
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#home">Trang chủ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#about">Giới thiệu</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#skills">Kỹ năng</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#projects">Dự án</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact">Liên hệ</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 hero-content">
+          <h1>Xin chào, tôi là <br><span class="typing-text">Nguyễn Quốc Hưng</span></h1>
+          <p class="lead">Full-stack Developer & UI/UX Enthusiast</p>
+          <p class="mb-4">Tôi tạo ra những trải nghiệm web tuyệt vời với mã nguồn sạch và thiết kế hiện đại.</p>
+          <a href="#contact" class="btn btn-primary-custom btn-lg">
+            <i class="bi bi-chat-dots me-2"></i>Liên hệ với tôi
+          </a>
+        </div>
+        <div class="col-lg-6 text-center">
+          <div class="hero-image" data-aos="fade-left">
+            <i class="bi bi-laptop" style="font-size: 15rem; color: rgba(255,255,255,0.1);"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="section-title" data-aos="fade-up">
+        <h2>Giới thiệu</h2>
+        <p class="lead">Tìm hiểu thêm về tôi</p>
+      </div>
+      
+      <div class="row align-items-center">
+        <div class="col-lg-6" data-aos="fade-right">
+          <img src="https://via.placeholder.com/500x400/667eea/ffffff?text=Quoc+Hung" alt="Nguyễn Quốc Hưng" class="img-fluid about-img">
+        </div>
+        <div class="col-lg-6" data-aos="fade-left">
+          <h3 class="mb-4">Lập trình viên Full-stack</h3>
+          <p class="mb-4">
+            Tôi là một lập trình viên đam mê với hơn 3 năm kinh nghiệm trong việc phát triển ứng dụng web. 
+            Tôi chuyên về JavaScript, React, Node.js và các công nghệ web hiện đại.
+          </p>
+          <p class="mb-4">
+            Tôi luôn tìm kiếm những thách thức mới và cơ hội để học hỏi. Mục tiêu của tôi là tạo ra 
+            những sản phẩm chất lượng cao với trải nghiệm người dùng tốt nhất.
+          </p>
+          
+          <div class="row">
+            <div class="col-sm-6">
+              <ul class="list-unstyled">
+                <li><strong>Họ tên:</strong> Nguyễn Quốc Hưng</li>
+                <li><strong>Tuổi:</strong> 25</li>
+                <li><strong>Địa chỉ:</strong> Hà Nội, Việt Nam</li>
+              </ul>
+            </div>
+            <div class="col-sm-6">
+              <ul class="list-unstyled">
+                <li><strong>Email:</strong> hung@example.com</li>
+                <li><strong>Điện thoại:</strong> +84 123 456 789</li>
+                <li><strong>Freelance:</strong> Có sẵn</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="section bg-light">
+    <div class="container">
+      <div class="section-title" data-aos="fade-up">
+        <h2>Kỹ năng</h2>
+        <p class="lead">Các công nghệ tôi sử dụng</p>
+      </div>
+      
+      <div class="row g-4">
+        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="skill-card">
+            <i class="bi bi-code-slash skill-icon"></i>
+            <h4>Frontend</h4>
+            <p>HTML5, CSS3, JavaScript ES6+, React, Vue.js, Bootstrap, Tailwind CSS</p>
+          </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="skill-card">
+            <i class="bi bi-server skill-icon"></i>
+            <h4>Backend</h4>
+            <p>Node.js, Express.js, Python, Django, PHP, Laravel, RESTful APIs</p>
+          </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+          <div class="skill-card">
+            <i class="bi bi-database skill-icon"></i>
+            <h4>Database</h4>
+            <p>MySQL, PostgreSQL, MongoDB, Redis, Firebase, Supabase</p>
+          </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+          <div class="skill-card">
+            <i class="bi bi-tools skill-icon"></i>
+            <h4>Tools</h4>
+            <p>Git, Docker, AWS, Nginx, Webpack, VS Code, Figma</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="section">
+    <div class="container">
+      <div class="section-title" data-aos="fade-up">
+        <h2>Dự án</h2>
+        <p class="lead">Một số dự án tôi đã thực hiện</p>
+      </div>
+      
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="project-card">
+            <div class="project-img">
+              <i class="bi bi-shop"></i>
+            </div>
+            <div class="project-content">
+              <h4>E-Commerce Website</h4>
+              <p>Website thương mại điện tử hoàn chỉnh với giỏ hàng, thanh toán và quản lý đơn hàng.</p>
+              <div class="mb-3">
+                <span class="tech-tag">React</span>
+                <span class="tech-tag">Node.js</span>
+                <span class="tech-tag">MongoDB</span>
+              </div>
+              <a href="#" class="btn btn-outline-primary btn-sm me-2">
+                <i class="bi bi-eye me-1"></i>Demo
+              </a>
+              <a href="#" class="btn btn-outline-secondary btn-sm">
+                <i class="bi bi-github me-1"></i>Code
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="project-card">
+            <div class="project-img">
+              <i class="bi bi-chat-dots"></i>
+            </div>
+            <div class="project-content">
+              <h4>Chat Application</h4>
+              <p>Ứng dụng chat thời gian thực với Socket.io, hỗ trợ nhóm chat và chia sẻ file.</p>
+              <div class="mb-3">
+                <span class="tech-tag">Vue.js</span>
+                <span class="tech-tag">Socket.io</span>
+                <span class="tech-tag">Express</span>
+              </div>
+              <a href="#" class="btn btn-outline-primary btn-sm me-2">
+                <i class="bi bi-eye me-1"></i>Demo
+              </a>
+              <a href="#" class="btn btn-outline-secondary btn-sm">
+                <i class="bi bi-github me-1"></i>Code
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+          <div class="project-card">
+            <div class="project-img">
+              <i class="bi bi-calendar-check"></i>
+            </div>
+            <div class="project-content">
+              <h4>Task Management</h4>
+              <p>Ứng dụng quản lý công việc với tính năng drag & drop, deadline và thông báo.</p>
+              <div class="mb-3">
+                <span class="tech-tag">React</span>
+                <span class="tech-tag">Redux</span>
+                <span class="tech-tag">Firebase</span>
+              </div>
+              <a href="#" class="btn btn-outline-primary btn-sm me-2">
+                <i class="bi bi-eye me-1"></i>Demo
+              </a>
+              <a href="#" class="btn btn-outline-secondary btn-sm">
+                <i class="bi bi-github me-1"></i>Code
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section contact">
+    <div class="container">
+      <div class="section-title" data-aos="fade-up">
+        <h2>Liên hệ</h2>
+        <p class="lead">Hãy kết nối với tôi</p>
+      </div>
+      
+      <div class="row g-4">
+        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="contact-card">
+            <i class="bi bi-geo-alt contact-icon"></i>
+            <h4>Địa chỉ</h4>
+            <p>Hà Nội, Việt Nam</p>
+          </div>
+        </div>
+        
+        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="contact-card">
+            <i class="bi bi-envelope contact-icon"></i>
+            <h4>Email</h4>
+            <p>hung@example.com</p>
+          </div>
+        </div>
+        
+        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="contact-card">
+            <i class="bi bi-phone contact-icon"></i>
+            <h4>Điện thoại</h4>
+            <p>+84 123 456 789</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row justify-content-center mt-5">
+        <div class="col-lg-8" data-aos="fade-up" data-aos-delay="400">
+          <form class="contact-form">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <input type="text" class="form-control" placeholder="Họ tên" required>
+              </div>
+              <div class="col-md-6">
+                <input type="email" class="form-control" placeholder="Email" required>
+              </div>
+              <div class="col-12">
+                <input type="text" class="form-control" placeholder="Chủ đề" required>
+              </div>
+              <div class="col-12">
+                <textarea class="form-control" rows="5" placeholder="Tin nhắn" required></textarea>
+              </div>
+              <div class="col-12 text-center">
+                <button type="submit" class="btn btn-primary-custom btn-lg">
+                  <i class="bi bi-send me-2"></i>Gửi tin nhắn
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <h4 class="mb-4">Nguyễn Quốc Hưng</h4>
+          <div class="social-links mb-4">
+            <a href="#"><i class="bi bi-facebook"></i></a>
+            <a href="#"><i class="bi bi-twitter"></i></a>
+            <a href="#"><i class="bi bi-linkedin"></i></a>
+            <a href="#"><i class="bi bi-github"></i></a>
+            <a href="#"><i class="bi bi-instagram"></i></a>
+          </div>
+          <p>&copy; 2025 Nguyễn Quốc Hưng. Tất cả quyền được bảo lưu.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- AOS Animation -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  
+  <!-- Custom JavaScript -->
+  <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Typing animation
+    const typingText = document.querySelector('.typing-text');
+    const texts = ['Nguyễn Quốc Hưng', 'Web Developer', 'UI/UX Designer', 'Full-stack Developer'];
+    let textIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+
+    function typeWriter() {
+      const currentText = texts[textIndex];
+      
+      if (isDeleting) {
+        typingText.textContent = currentText.substring(0, charIndex - 1);
+        charIndex--;
+      } else {
+        typingText.textContent = currentText.substring(0, charIndex + 1);
+        charIndex++;
+      }
+
+      let typeSpeed = isDeleting ? 50 : 100;
+
+      if (!isDeleting && charIndex === currentText.length) {
+        typeSpeed = 2000;
+        isDeleting = true;
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        textIndex = (textIndex + 1) % texts.length;
+        typeSpeed = 500;
+      }
+
+      setTimeout(typeWriter, typeSpeed);
+    }
+
+    // Start typing animation after page load
+    window.addEventListener('load', function() {
+      setTimeout(typeWriter, 1000);
+    });
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Form submission
+    const contactForm = document.querySelector('.contact-form');
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Simple form validation and submission simulation
+      const formData = new FormData(this);
+      
+      // Show success message (you can implement actual form submission here)
+      alert('Cảm ơn bạn đã liên hệ! Tôi sẽ phản hồi sớm nhất có thể.');
+      
+      // Reset form
+      this.reset();
+    });
+
+    // Add some interactive effects
+    document.querySelectorAll('.skill-card, .project-card, .contact-card').forEach(card => {
+      card.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-10px) scale(1.02)';
+      });
+      
+      card.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0) scale(1)';
+      });
+    });
+
+    // Parallax effect for hero section
+    window.addEventListener('scroll', function() {
+      const scrolled = window.pageYOffset;
+      const parallax = document.querySelector('.hero::before');
+      const speed = scrolled * 0.5;
+      
+      if (parallax) {
+        document.querySelector('.hero').style.transform = `translateY(${speed}px)`;
+      }
+    });
+  </script>
 </body>
 </html>
