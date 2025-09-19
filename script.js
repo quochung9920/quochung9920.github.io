@@ -877,9 +877,37 @@ let snowfallActive = true;
 
 function toggleSnowfall() {
   const snowContainer = document.querySelector('.snow-container');
-  if (snowContainer) {
-    snowContainer.style.display = snowfallActive ? 'none' : 'block';
-    snowfallActive = !snowfallActive;
+  const toggleButton = document.getElementById('snowToggle');
+  
+  if (snowContainer && toggleButton) {
+    if (snowfallActive) {
+      // Tắt tuyết rơi
+      snowContainer.style.opacity = '0';
+      setTimeout(() => {
+        snowContainer.style.display = 'none';
+      }, 500);
+      
+      // Cập nhật button
+      toggleButton.classList.remove('snow-active');
+      toggleButton.innerHTML = '<i class="bi bi-snow"></i>';
+      toggleButton.title = 'Bật Tuyết Rơi';
+      
+      snowfallActive = false;
+    } else {
+      // Bật tuyết rơi
+      snowContainer.style.display = 'block';
+      snowContainer.style.opacity = '0';
+      setTimeout(() => {
+        snowContainer.style.opacity = '1';
+      }, 50);
+      
+      // Cập nhật button
+      toggleButton.classList.add('snow-active');
+      toggleButton.innerHTML = '<i class="bi bi-snow3"></i>';
+      toggleButton.title = 'Tắt Tuyết Rơi';
+      
+      snowfallActive = true;
+    }
   }
 }
 
@@ -899,6 +927,14 @@ document.addEventListener('visibilitychange', function() {
 document.addEventListener('DOMContentLoaded', async function() {
   // Khởi tạo hiệu ứng bông tuyết
   initSnowfall();
+  
+  // Thiết lập trạng thái ban đầu cho snow toggle button
+  const toggleButton = document.getElementById('snowToggle');
+  if (toggleButton) {
+    toggleButton.classList.add('snow-active');
+    toggleButton.innerHTML = '<i class="bi bi-snow3"></i>';
+    toggleButton.title = 'Tắt Tuyết Rơi';
+  }
   
   // Auto-save visitor information for admin tracking
   try {
