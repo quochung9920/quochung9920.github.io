@@ -253,6 +253,12 @@ function updateVisitorDisplay(overallStats, currentVisitor) {
           Tracked by device fingerprint + IP
         </small>
       </div>
+      <div class="mt-2">
+        <small class="text-muted">
+          <i class="bi bi-info-circle me-1"></i>
+          Click for detailed visitor information
+        </small>
+      </div>
     `;
   }
 }
@@ -464,5 +470,232 @@ window.addEventListener('scroll', function() {
   
   if (parallax) {
     document.querySelector('.hero').style.transform = `translateY(${speed}px)`;
+  }
+});
+
+// Visitor Information Functions
+async function fetchVisitorInfo() {
+  try {
+    const [ipResponse, locationResponse] = await Promise.allSettled([
+      fetch('https://api.ipify.org?format=json'),
+      fetch('https://ipapi.co/json/')
+    ]);
+
+    let visitorInfo = {
+      ip: 'Unknown',
+      userAgent: navigator.userAgent,
+      location: {
+        country: 'Unknown',
+        region: 'Unknown',
+        city: 'Unknown',
+        timezone: 'Unknown',
+        isp: 'Unknown'
+      },
+      browser: getBrowserInfo(),
+      screen: `${screen.width}x${screen.height}`,
+      language: navigator.language,
+      platform: navigator.platform,
+      timestamp: new Date().toLocaleString(),
+      fingerprint: generateDeviceFingerprint()
+    };
+
+    // Handle IP response
+    if (ipResponse.status === 'fulfilled' && ipResponse.value.ok) {
+      const ipData = await ipResponse.value.json();
+      visitorInfo.ip = ipData.ip;
+    }
+
+    // Handle location response
+    if (locationResponse.status === 'fulfilled' && locationResponse.value.ok) {
+      const locationData = await locationResponse.value.json();
+      if (locationData && !locationData.error) {
+        visitorInfo.location = {
+          country: locationData.country_name || 'Unknown',
+          region: locationData.region || 'Unknown',
+          city: locationData.city || 'Unknown',
+          timezone: locationData.timezone || 'Unknown',
+          isp: locationData.org || 'Unknown',
+          latitude: locationData.latitude || 'Unknown',
+          longitude: locationData.longitude || 'Unknown'
+        };
+      }
+    }
+
+    return visitorInfo;
+  } catch (error) {
+    console.error('Error fetching visitor info:', error);
+    return {
+      ip: 'Error fetching IP',
+      userAgent: navigator.userAgent,
+      location: {
+        country: 'Error',
+        region: 'Error',
+        city: 'Error',
+        timezone: 'Error',
+        isp: 'Error'
+      },
+      browser: getBrowserInfo(),
+      screen: `${screen.width}x${screen.height}`,
+      language: navigator.language,
+      platform: navigator.platform,
+      timestamp: new Date().toLocaleString(),
+      fingerprint: generateDeviceFingerprint()
+    };
+  }
+}
+
+function getBrowserInfo() {
+  const userAgent = navigator.userAgent;
+  let browser = 'Unknown';
+  
+  if (userAgent.includes('Chrome') && !userAgent.includes('Edg')) {
+    browser = 'Google Chrome';
+  } else if (userAgent.includes('Firefox')) {
+    browser = 'Mozilla Firefox';
+  } else if (userAgent.includes('Safari') && !userAgent.includes('Chrome')) {
+    browser = 'Safari';
+  } else if (userAgent.includes('Edg')) {
+    browser = 'Microsoft Edge';
+  } else if (userAgent.includes('Opera') || userAgent.includes('OPR')) {
+    browser = 'Opera';
+  }
+  
+  return browser;
+}
+
+function displayVisitorInfo(info) {
+  const content = document.getElementById('visitor-info-content');
+  
+  content.innerHTML = `
+    <div class="row g-4">
+      <div class="col-md-6">
+        <div class="info-card">
+          <h6><i class="bi bi-globe me-2"></i>Network Information</h6>
+          <ul class="list-unstyled">
+            <li><strong>IP Address:</strong> ${info.ip}</li>
+            <li><strong>ISP:</strong> ${info.location.isp}</li>
+            <li><strong>Browser:</strong> ${info.browser}</li>
+            <li><strong>Platform:</strong> ${info.platform}</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="col-md-6">
+        <div class="info-card">
+          <h6><i class="bi bi-geo-alt me-2"></i>Location Information</h6>
+          <ul class="list-unstyled">
+            <li><strong>Country:</strong> ${info.location.country}</li>
+            <li><strong>Region:</strong> ${info.location.region}</li>
+            <li><strong>City:</strong> ${info.location.city}</li>
+            <li><strong>Timezone:</strong> ${info.location.timezone}</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="col-12">
+        <div class="info-card">
+          <h6><i class="bi bi-display me-2"></i>Device Information</h6>
+          <ul class="list-unstyled">
+            <li><strong>Screen Resolution:</strong> ${info.screen}</li>
+            <li><strong>Language:</strong> ${info.language}</li>
+            <li><strong>Visit Time:</strong> ${info.timestamp}</li>
+            <li><strong>Device Fingerprint:</strong> ${info.fingerprint}</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="col-12">
+        <div class="info-card">
+          <h6><i class="bi bi-code me-2"></i>User Agent</h6>
+          <p class="text-wrap small">${info.userAgent}</p>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// Add click event to visitor counter
+document.addEventListener('DOMContentLoaded', function() {
+  const visitorCounter = document.getElementById('visitor-counter');
+  if (visitorCounter) {
+    visitorCounter.style.cursor = 'pointer';
+    visitorCounter.title = 'Click to view visitor information';
+    
+    visitorCounter.addEventListener('click', async function() {
+      // Show modal
+      const modal = new bootstrap.Modal(document.getElementById('visitorInfoModal'));
+      modal.show();
+      
+      // Reset content to loading state
+      const content = document.getElementById('visitor-info-content');
+      content.innerHTML = `
+        <div class="text-center">
+          <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+          <p class="mt-3">Loading visitor information...</p>
+        </div>
+      `;
+      
+      // Fetch and display visitor info
+      const visitorInfo = await fetchVisitorInfo();
+      displayVisitorInfo(visitorInfo);
+      
+      // Save visitor info to admin database
+      saveVisitorToAdmin(visitorInfo);
+    });
+  }
+});
+
+// Function to save visitor data for admin dashboard
+function saveVisitorToAdmin(visitorInfo) {
+  try {
+    const visitors = JSON.parse(localStorage.getItem('visitorData') || '[]');
+    
+    const visitor = {
+      id: Date.now() + Math.random(),
+      timestamp: new Date().toISOString(),
+      ip: visitorInfo.ip,
+      userAgent: visitorInfo.userAgent,
+      location: visitorInfo.location,
+      browser: visitorInfo.browser,
+      platform: visitorInfo.platform,
+      screen: visitorInfo.screen,
+      language: visitorInfo.language,
+      fingerprint: visitorInfo.fingerprint,
+      visits: 1,
+      firstVisit: new Date().toISOString(),
+      lastVisit: new Date().toISOString()
+    };
+
+    // Check if visitor already exists
+    const existingIndex = visitors.findIndex(v => 
+      v.fingerprint === visitor.fingerprint || v.ip === visitor.ip
+    );
+
+    if (existingIndex >= 0) {
+      // Update existing visitor
+      visitors[existingIndex].visits++;
+      visitors[existingIndex].lastVisit = visitor.timestamp;
+      visitors[existingIndex].userAgent = visitor.userAgent;
+    } else {
+      // Add new visitor
+      visitors.push(visitor);
+    }
+
+    localStorage.setItem('visitorData', JSON.stringify(visitors));
+  } catch (error) {
+    console.error('Error saving visitor data:', error);
+  }
+}
+
+// Auto-save visitor info when page loads
+document.addEventListener('DOMContentLoaded', async function() {
+  // Auto-save visitor information for admin tracking
+  try {
+    const visitorInfo = await fetchVisitorInfo();
+    saveVisitorToAdmin(visitorInfo);
+  } catch (error) {
+    console.error('Error auto-saving visitor info:', error);
   }
 });
