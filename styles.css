@@ -163,6 +163,17 @@ html {
   padding: 100px 0;
 }
 
+/* Equal height columns for cards */
+.row.g-4 {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.row.g-4 > [class*="col-"] {
+  display: flex;
+  flex-direction: column;
+}
+
 .section-title {
   text-align: center;
   margin-bottom: 4rem;
@@ -208,6 +219,11 @@ html {
   box-shadow: var(--shadow);
   transition: all 0.3s ease;
   border: 1px solid #f8f9fa;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 280px;
 }
 
 .skill-card:hover {
@@ -232,6 +248,9 @@ html {
   box-shadow: var(--shadow);
   transition: all 0.3s ease;
   border: 1px solid #f8f9fa;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .project-card:hover {
@@ -251,6 +270,10 @@ html {
 
 .project-content {
   padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .tech-tag {
@@ -261,6 +284,59 @@ html {
   border-radius: 20px;
   font-size: 0.8rem;
   margin: 0.25rem;
+}
+
+/* Project buttons */
+.project-buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: auto;
+  padding-top: 1rem;
+}
+
+.btn-project-demo {
+  background: var(--gradient-primary);
+  border: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  flex: 1;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-project-demo:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+  color: white;
+}
+
+.btn-project-code {
+  background: transparent;
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  flex: 1;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-project-code:hover {
+  background: var(--primary-color);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.2);
 }
 
 /* Contact section */
@@ -275,6 +351,11 @@ html {
   text-align: center;
   box-shadow: var(--shadow);
   transition: all 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 200px;
 }
 
 .contact-card:hover {
@@ -400,6 +481,27 @@ html {
   .project-card,
   .contact-card {
     margin-bottom: 2rem;
+    min-height: auto; /* Reset min-height on mobile */
+  }
+  
+  .skill-card {
+    min-height: 250px; /* Smaller min-height for mobile */
+  }
+  
+  /* Project buttons responsive */
+  .project-buttons {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .btn-project-demo,
+  .btn-project-code {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .contact-card {
+    min-height: 180px; /* Smaller min-height for mobile */
   }
   
   .skill-icon {
