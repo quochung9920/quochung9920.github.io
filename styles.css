@@ -879,6 +879,23 @@ html {
     font-size: 1.3rem;
   }
   
+  /* Bỏ viền và background button menu trên mobile/tablet */
+  .nav-link {
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  
+  .nav-link:hover {
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  
   /* Hero Section */
   .hero {
     min-height: 100vh;
@@ -936,6 +953,15 @@ html {
     min-height: 250px; /* Smaller min-height for mobile */
   }
   
+  /* About image spacing trên mobile */
+  .about-image-container {
+    margin-bottom: 3rem; /* Tăng khoảng cách dưới hình ảnh */
+  }
+  
+  .about-placeholder {
+    margin-bottom: 3rem; /* Tăng khoảng cách cho placeholder */
+  }
+  
   /* Project buttons responsive */
   .project-buttons {
     flex-direction: column;
@@ -969,6 +995,35 @@ html {
   .social-links a {
     font-size: 1.3rem;
     margin: 0 0.5rem;
+  }
+}
+
+/* Media query cho tablet */
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* Bỏ viền và background button menu trên tablet */
+  .nav-link {
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  
+  .nav-link:hover {
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  
+  /* About image spacing trên tablet */
+  .about-image-container {
+    margin-bottom: 2.5rem;
+  }
+  
+  .about-placeholder {
+    margin-bottom: 2.5rem;
   }
 }
 
@@ -1332,5 +1387,250 @@ html {
   .info-card strong {
     width: 100px;
     font-size: 0.9rem;
+  }
+}
+
+/* ===== HIỆU ỨNG BÔNG TUYẾT RƠI ===== */
+
+/* Container bông tuyết */
+.snow-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+/* Bông tuyết cơ bản */
+.snowflake {
+  position: absolute;
+  top: -10px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-fill-mode: forwards;
+  user-select: none;
+}
+
+/* Các kích thước bông tuyết khác nhau */
+.snowflake.tiny {
+  font-size: 0.5rem;
+  opacity: 0.6;
+}
+
+.snowflake.small {
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+.snowflake.medium {
+  font-size: 1.1rem;
+  opacity: 0.8;
+}
+
+.snowflake.large {
+  font-size: 1.4rem;
+  opacity: 0.9;
+}
+
+.snowflake.xlarge {
+  font-size: 1.8rem;
+  opacity: 1;
+}
+
+/* Animation rơi với hiệu ứng gió - Pattern 1: Gió nhẹ */
+@keyframes snowfall-wind-1 {
+  0% {
+    transform: translateX(0) translateY(-10px) rotate(0deg);
+  }
+  25% {
+    transform: translateX(5px) translateY(25vh) rotate(90deg);
+  }
+  50% {
+    transform: translateX(-3px) translateY(50vh) rotate(180deg);
+  }
+  75% {
+    transform: translateX(7px) translateY(75vh) rotate(270deg);
+  }
+  100% {
+    transform: translateX(0) translateY(110vh) rotate(360deg);
+  }
+}
+
+/* Animation rơi với hiệu ứng gió - Pattern 2: Gió trung bình */
+@keyframes snowfall-wind-2 {
+  0% {
+    transform: translateX(0) translateY(-10px) rotate(0deg);
+  }
+  20% {
+    transform: translateX(-8px) translateY(20vh) rotate(72deg);
+  }
+  40% {
+    transform: translateX(10px) translateY(40vh) rotate(144deg);
+  }
+  60% {
+    transform: translateX(-5px) translateY(60vh) rotate(216deg);
+  }
+  80% {
+    transform: translateX(12px) translateY(80vh) rotate(288deg);
+  }
+  100% {
+    transform: translateX(-3px) translateY(110vh) rotate(360deg);
+  }
+}
+
+/* Animation rơi với hiệu ứng gió - Pattern 3: Gió mạnh */
+@keyframes snowfall-wind-3 {
+  0% {
+    transform: translateX(0) translateY(-10px) rotate(0deg);
+  }
+  30% {
+    transform: translateX(15px) translateY(30vh) rotate(108deg);
+  }
+  60% {
+    transform: translateX(-12px) translateY(60vh) rotate(216deg);
+  }
+  100% {
+    transform: translateX(8px) translateY(110vh) rotate(324deg);
+  }
+}
+
+/* Animation rơi với hiệu ứng gió - Pattern 4: Gió xoáy */
+@keyframes snowfall-wind-4 {
+  0% {
+    transform: translateX(0) translateY(-10px) rotate(0deg);
+  }
+  25% {
+    transform: translateX(-10px) translateY(25vh) rotate(90deg);
+  }
+  50% {
+    transform: translateX(18px) translateY(50vh) rotate(180deg);
+  }
+  75% {
+    transform: translateX(-15px) translateY(75vh) rotate(270deg);
+  }
+  100% {
+    transform: translateX(5px) translateY(110vh) rotate(360deg);
+  }
+}
+
+/* Animation rơi với hiệu ứng gió - Pattern 5: Gió dao động */
+@keyframes snowfall-wind-5 {
+  0% {
+    transform: translateX(0) translateY(-10px) rotate(0deg);
+  }
+  20% {
+    transform: translateX(12px) translateY(20vh) rotate(72deg);
+  }
+  40% {
+    transform: translateX(-18px) translateY(40vh) rotate(144deg);
+  }
+  60% {
+    transform: translateX(20px) translateY(60vh) rotate(216deg);
+  }
+  80% {
+    transform: translateX(-8px) translateY(80vh) rotate(288deg);
+  }
+  100% {
+    transform: translateX(3px) translateY(110vh) rotate(360deg);
+  }
+}
+
+/* Animation rơi thẳng - không có gió */
+@keyframes snowfall-straight {
+  0% {
+    transform: translateX(0) translateY(-10px) rotate(0deg);
+  }
+  100% {
+    transform: translateX(0) translateY(110vh) rotate(360deg);
+  }
+}
+
+/* Gán animation ngẫu nhiên cho bông tuyết - Thời gian chậm để rơi nhẹ nhàng */
+.snowflake:nth-child(7n+1) { 
+  animation: snowfall-wind-1 8s linear infinite;
+}
+.snowflake:nth-child(7n+2) { 
+  animation: snowfall-wind-2 10s linear infinite;
+}
+.snowflake:nth-child(7n+3) { 
+  animation: snowfall-wind-3 7s linear infinite;
+}
+.snowflake:nth-child(7n+4) { 
+  animation: snowfall-wind-4 9s linear infinite;
+}
+.snowflake:nth-child(7n+5) { 
+  animation: snowfall-wind-5 6s linear infinite;
+}
+.snowflake:nth-child(7n+6) { 
+  animation: snowfall-straight 12s linear infinite;
+}
+.snowflake:nth-child(7n) { 
+  animation: snowfall-wind-1 5s linear infinite;
+}
+
+/* Hiệu ứng phát sáng cho bông tuyết */
+.snowflake {
+  text-shadow: 
+    0 0 3px rgba(255, 255, 255, 0.8),
+    0 0 6px rgba(255, 255, 255, 0.6),
+    0 0 9px rgba(255, 255, 255, 0.4);
+  /* Đảm bảo animation restart đúng cách */
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+}
+
+/* Class để restart animation */
+.snowflake.restart {
+  animation: none;
+}
+
+.snowflake.restart.active {
+  animation: inherit;
+}
+
+/* Hiệu ứng fade out nhẹ nhàng khi bông tuyết biến mất */
+.snowflake.fade-out {
+  animation: fadeOut 3s ease-out forwards;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+}
+
+/* Responsive cho mobile */
+@media (max-width: 768px) {
+  .snowflake {
+    font-size: 0.8rem;
+  }
+  
+  .snowflake.tiny { font-size: 0.4rem; }
+  .snowflake.small { font-size: 0.6rem; }
+  .snowflake.medium { font-size: 0.9rem; }
+  .snowflake.large { font-size: 1.1rem; }
+  .snowflake.xlarge { font-size: 1.3rem; }
+  
+  /* Giảm cường độ gió trên mobile */
+  @keyframes snowfall-wind-1 {
+    0% { transform: translateX(0) translateY(-10px) rotate(0deg); }
+    50% { transform: translateX(5px) translateY(50vh) rotate(180deg); }
+    100% { transform: translateX(0) translateY(100vh) rotate(360deg); }
+  }
+  
+  @keyframes snowfall-wind-2 {
+    0% { transform: translateX(0) translateY(-10px) rotate(0deg); }
+    50% { transform: translateX(-5px) translateY(50vh) rotate(180deg); }
+    100% { transform: translateX(0) translateY(100vh) rotate(360deg); }
   }
 }
