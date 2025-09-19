@@ -1,0 +1,6 @@
+{
+    "git.path": "D:\\Git\\bin\\git.exe",
+    "git.enabled": true,
+    "git.autorefresh": true,
+    "git.autofetch": true
+}

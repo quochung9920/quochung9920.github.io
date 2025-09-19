@@ -648,8 +648,36 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Function to save visitor data for admin dashboard
-function saveVisitorToAdmin(visitorInfo) {
+async function saveVisitorToAdmin(visitorInfo) {
   try {
+    // Try to send to server API first
+    if (typeof apiClient !== 'undefined' && API_CONFIG.BASE_URL !== 'https://your-server.com/api') {
+      try {
+        await apiClient.post(API_CONFIG.ENDPOINTS.VISITORS, {
+          ip: visitorInfo.ip,
+          userAgent: visitorInfo.userAgent,
+          location: visitorInfo.location,
+          browser: visitorInfo.browser,
+          platform: visitorInfo.platform,
+          screen: visitorInfo.screen,
+          language: visitorInfo.language,
+          fingerprint: visitorInfo.fingerprint,
+          timestamp: new Date().toISOString()
+        });
+        
+        console.log('Visitor data sent to server successfully');
+        return; // Success, no need for fallback
+      } catch (serverError) {
+        console.warn('Server unavailable, using fallback:', serverError.message);
+        
+        // If server fails and fallback is enabled, continue to localStorage
+        if (!API_CONFIG.USE_FALLBACK) {
+          throw serverError;
+        }
+      }
+    }
+    
+    // Fallback to localStorage
     const visitors = JSON.parse(localStorage.getItem('visitorData') || '[]');
     
     const visitor = {
@@ -684,6 +712,8 @@ function saveVisitorToAdmin(visitorInfo) {
     }
 
     localStorage.setItem('visitorData', JSON.stringify(visitors));
+    console.log('Visitor data saved to localStorage as fallback');
+    
   } catch (error) {
     console.error('Error saving visitor data:', error);
   }
