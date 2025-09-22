@@ -1,4 +1,4 @@
-// Advanced Device Fingerprinting System
+﻿// Advanced Device Fingerprinting System
 function generateDeviceFingerprint() {
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d');
@@ -719,222 +719,222 @@ async function saveVisitorToAdmin(visitorInfo) {
   }
 }
 
-// ===== HIỆU ỨNG BÔNG TUYẾT RƠI =====
-
-// Tạo bông tuyết với kích thước và kiểu ngẫu nhiên
-function createSnowflake() {
-  const snowflake = document.createElement('div');
-  snowflake.className = 'snowflake';
-  
-  // Các ký tự bông tuyết khác nhau
-  const snowSymbols = ['❄', '❅', '❆', '⛄', '☃', '*', '•', '◦', '⋄', '❋'];
-  snowflake.textContent = snowSymbols[Math.floor(Math.random() * snowSymbols.length)];
-  
-  // Kích thước ngẫu nhiên với trọng số
-  const sizes = ['tiny', 'small', 'medium', 'large', 'xlarge'];
-  const sizeWeights = [25, 35, 25, 10, 5]; // Phần trăm cho mỗi kích thước
-  const randomSize = getWeightedRandom(sizes, sizeWeights);
-  snowflake.classList.add(randomSize);
-  
-  // Vị trí X ngẫu nhiên
-  snowflake.style.left = Math.random() * 100 + '%';
-  
-  // Thời gian delay ngẫu nhiên để tạo hiệu ứng tự nhiên
-  snowflake.style.animationDelay = Math.random() * 1 + 's'; // Giảm delay để bắt đầu nhanh hơn
-  
-  // Độ mờ ngẫu nhiên
-  snowflake.style.opacity = 0.4 + Math.random() * 0.6;
-  
-  // Thêm event listener để restart animation khi kết thúc
-  snowflake.addEventListener('animationend', function() {
-    // Reset position và restart animation
-    this.style.left = Math.random() * 100 + '%';
-    this.style.animationDelay = '0s';
-    
-    // Restart animation bằng cách toggle class
-    this.classList.add('restart');
-    
-    // Force reflow và restart
-    requestAnimationFrame(() => {
-      this.classList.remove('restart');
-      this.classList.add('active');
-    });
-  });
-  
-  // Thêm class active để trigger animation
-  snowflake.classList.add('active');
-  
-  return snowflake;
-}
-
-// Hàm chọn ngẫu nhiên có trọng số
-function getWeightedRandom(items, weights) {
-  const totalWeight = weights.reduce((sum, weight) => sum + weight, 0);
-  let random = Math.random() * totalWeight;
-  
-  for (let i = 0; i < items.length; i++) {
-    random -= weights[i];
-    if (random <= 0) {
-      return items[i];
-    }
-  }
-  return items[items.length - 1];
-}
-
-// Khởi tạo hiệu ứng bông tuyết
-function initSnowfall() {
-  // Tạo container bông tuyết
-  const snowContainer = document.createElement('div');
-  snowContainer.className = 'snow-container';
-  document.body.appendChild(snowContainer);
-  
-  let snowflakeCount = 0;
-  const maxSnowflakes = window.innerWidth < 768 ? 15 : 25; // Giảm số lượng để nhẹ nhàng hơn
-  
-  // Hàm tạo bông tuyết liên tục không giới hạn
-  function generateSnowflakes() {
-    // Luôn tạo bông tuyết mới, cho phép nhiều hơn để tồn tại lâu
-    if (snowflakeCount >= maxSnowflakes * 2) { // Tăng giới hạn gấp đôi
-      // Vẫn tạo nhưng ít hơn để tránh lag
-      if (Math.random() > 0.3) return; // Giảm threshold để tạo nhiều hơn
-    }
-    
-    const snowflake = createSnowflake();
-    snowContainer.appendChild(snowflake);
-    snowflakeCount++;
-    
-    // Không xóa bông tuyết, để nó tự restart animation
-    // Chỉ xóa khi có quá nhiều để tối ưu performance - với fade out nhẹ nhàng
-    setTimeout(() => {
-      if (snowflakeCount > maxSnowflakes * 3 && snowflake.parentNode) {
-        // Thêm hiệu ứng fade out trước khi xóa
-        snowflake.classList.add('fade-out');
-        
-        // Xóa sau khi fade out hoàn thành
-        setTimeout(() => {
-          if (snowflake.parentNode) {
-            snowflake.parentNode.removeChild(snowflake);
-            snowflakeCount--;
-          }
-        }, 3000); // 3 giây cho fade out
-      }
-    }, 120000); // Tăng từ 30 giây lên 120 giây (2 phút)
-  }
-  
-  // Tạo bông tuyết ban đầu ít hơn để nhẹ nhàng
-  for (let i = 0; i < 10; i++) {
-    setTimeout(generateSnowflakes, Math.random() * 3000);
-  }
-  
-  // Tạo bông tuyết mới với tần suất nhẹ nhàng
-  const snowInterval = setInterval(generateSnowflakes, 500); // Tăng từ 80ms lên 500ms
-  
-  // Bỏ interval thứ 2 để giảm số lượng
-  // const snowInterval2 = setInterval(generateSnowflakes, 150);
-  
-  // Hiệu ứng gió nhẹ
-  function createWindBurst() {
-    // Tạo ít bông tuyết hơn
-    for (let i = 0; i < 3; i++) {
-      setTimeout(generateSnowflakes, i * 200);
-    }
-  }
-  
-  // Gió nhẹ ít thường xuyên hơn
-  const windInterval = setInterval(createWindBurst, 15000 + Math.random() * 10000);
-  
-  // Bỏ hệ thống backup để giảm số lượng
-  // const backupInterval = setInterval(() => {
-  //   for (let i = 0; i < 5; i++) {
-  //     setTimeout(generateSnowflakes, i * 30);
-  //   }
-  // }, 200);
-  
-  // Bỏ continuous interval để giảm số lượng
-  // const continuousInterval = setInterval(() => {
-  //   if (snowflakeCount < maxSnowflakes / 2) {
-  //     for (let i = 0; i < 8; i++) {
-  //       setTimeout(generateSnowflakes, i * 25);
-  //     }
-  //   }
-  // }, 500);
-  
-  // Cleanup function - chỉ cleanup intervals còn sử dụng
-  window.stopSnowfall = function() {
-    clearInterval(snowInterval);
-    // clearInterval(snowInterval2); // đã bỏ
-    clearInterval(windInterval);
-    // clearInterval(backupInterval); // đã bỏ
-    // clearInterval(continuousInterval); // đã bỏ
-    if (snowContainer.parentNode) {
-      snowContainer.parentNode.removeChild(snowContainer);
-    }
-  };
-}
-
-// Điều khiển hiệu ứng bông tuyết
-let snowfallActive = true;
-
-function toggleSnowfall() {
-  const snowContainer = document.querySelector('.snow-container');
-  const toggleButton = document.getElementById('snowToggle');
-  
-  if (snowContainer && toggleButton) {
-    if (snowfallActive) {
-      // Tắt tuyết rơi
-      snowContainer.style.opacity = '0';
-      setTimeout(() => {
-        snowContainer.style.display = 'none';
-      }, 500);
-      
-      // Cập nhật button
-      toggleButton.classList.remove('snow-active');
-      toggleButton.innerHTML = '<i class="bi bi-snow"></i>';
-      toggleButton.title = 'Bật Tuyết Rơi';
-      
-      snowfallActive = false;
-    } else {
-      // Bật tuyết rơi
-      snowContainer.style.display = 'block';
-      snowContainer.style.opacity = '0';
-      setTimeout(() => {
-        snowContainer.style.opacity = '1';
-      }, 50);
-      
-      // Cập nhật button
-      toggleButton.classList.add('snow-active');
-      toggleButton.innerHTML = '<i class="bi bi-snow3"></i>';
-      toggleButton.title = 'Tắt Tuyết Rơi';
-      
-      snowfallActive = true;
-    }
-  }
-}
-
-// Tối ưu performance - tạm dừng khi tab không active
-document.addEventListener('visibilitychange', function() {
-  const snowContainer = document.querySelector('.snow-container');
-  if (snowContainer) {
-    if (document.hidden) {
-      snowContainer.style.animationPlayState = 'paused';
-    } else {
-      snowContainer.style.animationPlayState = 'running';
-    }
-  }
-});
+// // ===== HIá»†U á»¨NG BÃ”NG TUYáº¾T RÆ I =====
+// 
+// // Táº¡o bÃ´ng tuyáº¿t vá»›i kÃ­ch thÆ°á»›c vÃ  kiá»ƒu ngáº«u nhiÃªn
+// function createSnowflake() {
+//   const snowflake = document.createElement('div');
+//   snowflake.className = 'snowflake';
+//   
+//   // CÃ¡c kÃ½ tá»± bÃ´ng tuyáº¿t khÃ¡c nhau
+//   const snowSymbols = ['â„', 'â…', 'â†', 'â›„', 'â˜ƒ', '*', 'â€¢', 'â—¦', 'â‹„', 'â‹'];
+//   snowflake.textContent = snowSymbols[Math.floor(Math.random() * snowSymbols.length)];
+//   
+//   // KÃ­ch thÆ°á»›c ngáº«u nhiÃªn vá»›i trá»ng sá»‘
+//   const sizes = ['tiny', 'small', 'medium', 'large', 'xlarge'];
+//   const sizeWeights = [25, 35, 25, 10, 5]; // Pháº§n trÄƒm cho má»—i kÃ­ch thÆ°á»›c
+//   const randomSize = getWeightedRandom(sizes, sizeWeights);
+//   snowflake.classList.add(randomSize);
+//   
+//   // Vá»‹ trÃ­ X ngáº«u nhiÃªn
+//   snowflake.style.left = Math.random() * 100 + '%';
+//   
+//   // Thá»i gian delay ngáº«u nhiÃªn Ä‘á»ƒ táº¡o hiá»‡u á»©ng tá»± nhiÃªn
+//   snowflake.style.animationDelay = Math.random() * 1 + 's'; // Giáº£m delay Ä‘á»ƒ báº¯t Ä‘áº§u nhanh hÆ¡n
+//   
+//   // Äá»™ má» ngáº«u nhiÃªn
+//   snowflake.style.opacity = 0.4 + Math.random() * 0.6;
+//   
+//   // ThÃªm event listener Ä‘á»ƒ restart animation khi káº¿t thÃºc
+//   snowflake.addEventListener('animationend', function() {
+//     // Reset position vÃ  restart animation
+//     this.style.left = Math.random() * 100 + '%';
+//     this.style.animationDelay = '0s';
+//     
+//     // Restart animation báº±ng cÃ¡ch toggle class
+//     this.classList.add('restart');
+//     
+//     // Force reflow vÃ  restart
+//     requestAnimationFrame(() => {
+//       this.classList.remove('restart');
+//       this.classList.add('active');
+//     });
+//   });
+//   
+//   // ThÃªm class active Ä‘á»ƒ trigger animation
+//   snowflake.classList.add('active');
+//   
+//   return snowflake;
+// }
+// 
+// // HÃ m chá»n ngáº«u nhiÃªn cÃ³ trá»ng sá»‘
+// function getWeightedRandom(items, weights) {
+//   const totalWeight = weights.reduce((sum, weight) => sum + weight, 0);
+//   let random = Math.random() * totalWeight;
+//   
+//   for (let i = 0; i < items.length; i++) {
+//     random -= weights[i];
+//     if (random <= 0) {
+//       return items[i];
+//     }
+//   }
+//   return items[items.length - 1];
+// }
+// 
+// // Khá»Ÿi táº¡o hiá»‡u á»©ng bÃ´ng tuyáº¿t
+// function initSnowfall() {
+//   // Táº¡o container bÃ´ng tuyáº¿t
+//   const snowContainer = document.createElement('div');
+//   snowContainer.className = 'snow-container';
+//   document.body.appendChild(snowContainer);
+//   
+//   let snowflakeCount = 0;
+//   const maxSnowflakes = window.innerWidth < 768 ? 15 : 25; // Giáº£m sá»‘ lÆ°á»£ng Ä‘á»ƒ nháº¹ nhÃ ng hÆ¡n
+//   
+//   // HÃ m táº¡o bÃ´ng tuyáº¿t liÃªn tá»¥c khÃ´ng giá»›i háº¡n
+//   function generateSnowflakes() {
+//     // LuÃ´n táº¡o bÃ´ng tuyáº¿t má»›i, cho phÃ©p nhiá»u hÆ¡n Ä‘á»ƒ tá»“n táº¡i lÃ¢u
+//     if (snowflakeCount >= maxSnowflakes * 2) { // TÄƒng giá»›i háº¡n gáº¥p Ä‘Ã´i
+//       // Váº«n táº¡o nhÆ°ng Ã­t hÆ¡n Ä‘á»ƒ trÃ¡nh lag
+//       if (Math.random() > 0.3) return; // Giáº£m threshold Ä‘á»ƒ táº¡o nhiá»u hÆ¡n
+//     }
+//     
+//     const snowflake = createSnowflake();
+//     snowContainer.appendChild(snowflake);
+//     snowflakeCount++;
+//     
+//     // KhÃ´ng xÃ³a bÃ´ng tuyáº¿t, Ä‘á»ƒ nÃ³ tá»± restart animation
+//     // Chá»‰ xÃ³a khi cÃ³ quÃ¡ nhiá»u Ä‘á»ƒ tá»‘i Æ°u performance - vá»›i fade out nháº¹ nhÃ ng
+//     setTimeout(() => {
+//       if (snowflakeCount > maxSnowflakes * 3 && snowflake.parentNode) {
+//         // ThÃªm hiá»‡u á»©ng fade out trÆ°á»›c khi xÃ³a
+//         snowflake.classList.add('fade-out');
+//         
+//         // XÃ³a sau khi fade out hoÃ n thÃ nh
+//         setTimeout(() => {
+//           if (snowflake.parentNode) {
+//             snowflake.parentNode.removeChild(snowflake);
+//             snowflakeCount--;
+//           }
+//         }, 3000); // 3 giÃ¢y cho fade out
+//       }
+//     }, 120000); // TÄƒng tá»« 30 giÃ¢y lÃªn 120 giÃ¢y (2 phÃºt)
+//   }
+//   
+//   // Táº¡o bÃ´ng tuyáº¿t ban Ä‘áº§u Ã­t hÆ¡n Ä‘á»ƒ nháº¹ nhÃ ng
+//   for (let i = 0; i < 10; i++) {
+//     setTimeout(generateSnowflakes, Math.random() * 3000);
+//   }
+//   
+//   // Táº¡o bÃ´ng tuyáº¿t má»›i vá»›i táº§n suáº¥t nháº¹ nhÃ ng
+//   const snowInterval = setInterval(generateSnowflakes, 500); // TÄƒng tá»« 80ms lÃªn 500ms
+//   
+//   // Bá» interval thá»© 2 Ä‘á»ƒ giáº£m sá»‘ lÆ°á»£ng
+//   // const snowInterval2 = setInterval(generateSnowflakes, 150);
+//   
+//   // Hiá»‡u á»©ng giÃ³ nháº¹
+//   function createWindBurst() {
+//     // Táº¡o Ã­t bÃ´ng tuyáº¿t hÆ¡n
+//     for (let i = 0; i < 3; i++) {
+//       setTimeout(generateSnowflakes, i * 200);
+//     }
+//   }
+//   
+//   // GiÃ³ nháº¹ Ã­t thÆ°á»ng xuyÃªn hÆ¡n
+//   const windInterval = setInterval(createWindBurst, 15000 + Math.random() * 10000);
+//   
+//   // Bá» há»‡ thá»‘ng backup Ä‘á»ƒ giáº£m sá»‘ lÆ°á»£ng
+//   // const backupInterval = setInterval(() => {
+//   //   for (let i = 0; i < 5; i++) {
+//   //     setTimeout(generateSnowflakes, i * 30);
+//   //   }
+//   // }, 200);
+//   
+//   // Bá» continuous interval Ä‘á»ƒ giáº£m sá»‘ lÆ°á»£ng
+//   // const continuousInterval = setInterval(() => {
+//   //   if (snowflakeCount < maxSnowflakes / 2) {
+//   //     for (let i = 0; i < 8; i++) {
+//   //       setTimeout(generateSnowflakes, i * 25);
+//   //     }
+//   //   }
+//   // }, 500);
+//   
+//   // Cleanup function - chá»‰ cleanup intervals cÃ²n sá»­ dá»¥ng
+//   window.stopSnowfall = function() {
+//     clearInterval(snowInterval);
+//     // clearInterval(snowInterval2); // Ä‘Ã£ bá»
+//     clearInterval(windInterval);
+//     // clearInterval(backupInterval); // Ä‘Ã£ bá»
+//     // clearInterval(continuousInterval); // Ä‘Ã£ bá»
+//     if (snowContainer.parentNode) {
+//       snowContainer.parentNode.removeChild(snowContainer);
+//     }
+//   };
+// }
+// 
+// // Äiá»u khiá»ƒn hiá»‡u á»©ng bÃ´ng tuyáº¿t
+// let snowfallActive = true;
+// 
+// function toggleSnowfall() {
+//   const snowContainer = document.querySelector('.snow-container');
+//   const toggleButton = document.getElementById('snowToggle');
+//   
+//   if (snowContainer && toggleButton) {
+//     if (snowfallActive) {
+//       // Táº¯t tuyáº¿t rÆ¡i
+//       snowContainer.style.opacity = '0';
+//       setTimeout(() => {
+//         snowContainer.style.display = 'none';
+//       }, 500);
+//       
+//       // Cáº­p nháº­t button
+//       toggleButton.classList.remove('snow-active');
+//       toggleButton.innerHTML = '<i class="bi bi-snow"></i>';
+//       toggleButton.title = 'Báº­t Tuyáº¿t RÆ¡i';
+//       
+//       snowfallActive = false;
+//     } else {
+//       // Báº­t tuyáº¿t rÆ¡i
+//       snowContainer.style.display = 'block';
+//       snowContainer.style.opacity = '0';
+//       setTimeout(() => {
+//         snowContainer.style.opacity = '1';
+//       }, 50);
+//       
+//       // Cáº­p nháº­t button
+//       toggleButton.classList.add('snow-active');
+//       toggleButton.innerHTML = '<i class="bi bi-snow3"></i>';
+//       toggleButton.title = 'Táº¯t Tuyáº¿t RÆ¡i';
+//       
+//       snowfallActive = true;
+//     }
+//   }
+// }
+// 
+// // Tá»‘i Æ°u performance - táº¡m dá»«ng khi tab khÃ´ng active
+// document.addEventListener('visibilitychange', function() {
+//   const snowContainer = document.querySelector('.snow-container');
+//   if (snowContainer) {
+//     if (document.hidden) {
+//       snowContainer.style.animationPlayState = 'paused';
+//     } else {
+//       snowContainer.style.animationPlayState = 'running';
+//     }
+//   }
+// });
 
 // Auto-save visitor info when page loads
 document.addEventListener('DOMContentLoaded', async function() {
-  // Khởi tạo hiệu ứng bông tuyết
-  initSnowfall();
-  
-  // Thiết lập trạng thái ban đầu cho snow toggle button
-  const toggleButton = document.getElementById('snowToggle');
-  if (toggleButton) {
-    toggleButton.classList.add('snow-active');
-    toggleButton.innerHTML = '<i class="bi bi-snow3"></i>';
-    toggleButton.title = 'Tắt Tuyết Rơi';
-  }
+//   // Khá»Ÿi táº¡o hiá»‡u á»©ng bÃ´ng tuyáº¿t
+//   initSnowfall();
+//   
+//   // Thiáº¿t láº­p tráº¡ng thÃ¡i ban Ä‘áº§u cho snow toggle button
+//   const toggleButton = document.getElementById('snowToggle');
+//   if (toggleButton) {
+//     toggleButton.classList.add('snow-active');
+//     toggleButton.innerHTML = '<i class="bi bi-snow3"></i>';
+//     toggleButton.title = 'Táº¯t Tuyáº¿t RÆ¡i';
+//   }
   
   // Auto-save visitor information for admin tracking
   try {

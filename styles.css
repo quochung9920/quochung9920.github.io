@@ -1,4 +1,4 @@
-:root {
+﻿:root {
   --primary-color: #708090;
   --secondary-color: #2F4F4F;
   --accent-color: #C0C0C0;
@@ -165,59 +165,59 @@ html {
 }
 
 /* Snow Toggle Button */
-.btn-snow-toggle {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: rgba(255, 255, 255, 0.9);
-  border-radius: 50%;
-  width: 45px;
-  height: 45px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
+/* .btn-snow-toggle { */
+  /* background: rgba(255, 255, 255, 0.1); */
+  /* border: 1px solid rgba(255, 255, 255, 0.2); */
+  /* color: rgba(255, 255, 255, 0.9); */
+  /* border-radius: 50%; */
+  /* width: 45px; */
+  /* height: 45px; */
+  /* display: flex; */
+  /* align-items: center; */
+  /* justify-content: center; */
+  /* backdrop-filter: blur(10px); */
+  /* -webkit-backdrop-filter: blur(10px); */
+  /* transition: all 0.3s ease; */
+  /* position: relative; */
+  /* overflow: hidden; */
+/* } */
 
-.btn-snow-toggle:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.4);
-  color: white;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-}
+/* .btn-snow-toggle:hover { */
+  /* background: rgba(255, 255, 255, 0.2); */
+  /* border-color: rgba(255, 255, 255, 0.4); */
+  /* color: white; */
+  /* transform: translateY(-2px); */
+  /* box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2); */
+/* } */
 
-.btn-snow-toggle:active {
-  transform: translateY(0);
-}
+/* .btn-snow-toggle:active { */
+  /* transform: translateY(0); */
+/* } */
 
-.btn-snow-toggle.snow-active {
-  background: rgba(135, 206, 235, 0.3);
-  border-color: rgba(135, 206, 235, 0.5);
-  color: #87CEEB;
-  animation: snowGlow 2s ease-in-out infinite;
-}
+/* .btn-snow-toggle.snow-active { */
+  /* background: rgba(135, 206, 235, 0.3); */
+  /* border-color: rgba(135, 206, 235, 0.5); */
+  /* color: #87CEEB; */
+  /* animation: snowGlow 2s ease-in-out infinite; */
+/* } */
 
-@keyframes snowGlow {
-  0%, 100% { 
-    box-shadow: 0 0 5px rgba(135, 206, 235, 0.3);
-  }
-  50% { 
-    box-shadow: 0 0 20px rgba(135, 206, 235, 0.6);
-  }
-}
+/* @keyframes snowGlow { */
+  /* 0%, 100% { */
+    /* box-shadow: 0 0 5px rgba(135, 206, 235, 0.3); */
+  /* } */
+  /* 50% { */
+    /* box-shadow: 0 0 20px rgba(135, 206, 235, 0.6); */
+  /* } */
+/* } */
 
-.btn-snow-toggle i {
-  font-size: 1.2rem;
-  transition: all 0.3s ease;
-}
+/* .btn-snow-toggle i { */
+  /* font-size: 1.2rem; */
+  /* transition: all 0.3s ease; */
+/* } */
 
-.btn-snow-toggle:hover i {
-  transform: rotate(180deg);
-}
+/* .btn-snow-toggle:hover i { */
+  /* transform: rotate(180deg); */
+/* } */
 
 /* Hero Section */
 .hero {
@@ -934,7 +934,7 @@ html {
     font-size: 1.3rem;
   }
   
-  /* Bỏ viền và background button menu trên mobile/tablet */
+  /* Bá» viá»n vÃ  background button menu trÃªn mobile/tablet */
   .nav-link {
     border: none !important;
     box-shadow: none !important;
@@ -951,16 +951,16 @@ html {
     -webkit-backdrop-filter: none !important;
   }
   
-  /* Snow toggle button trên mobile */
-  .btn-snow-toggle {
-    width: 40px;
-    height: 40px;
-    margin-top: 10px;
-  }
+  /* Snow toggle button trÃªn mobile */
+  /* .btn-snow-toggle { */
+    /* width: 40px; */
+    /* height: 40px; */
+    /* margin-top: 10px; */
+  /* } */
   
-  .btn-snow-toggle i {
-    font-size: 1rem;
-  }
+  /* .btn-snow-toggle i { */
+    /* font-size: 1rem; */
+  /* } */
   
   /* Hero Section */
   .hero {
@@ -1019,13 +1019,13 @@ html {
     min-height: 250px; /* Smaller min-height for mobile */
   }
   
-  /* About image spacing trên mobile */
+  /* About image spacing trÃªn mobile */
   .about-image-container {
-    margin-bottom: 3rem; /* Tăng khoảng cách dưới hình ảnh */
+    margin-bottom: 3rem; /* TÄƒng khoáº£ng cÃ¡ch dÆ°á»›i hÃ¬nh áº£nh */
   }
   
   .about-placeholder {
-    margin-bottom: 3rem; /* Tăng khoảng cách cho placeholder */
+    margin-bottom: 3rem; /* TÄƒng khoáº£ng cÃ¡ch cho placeholder */
   }
   
   /* Project buttons responsive */
@@ -1066,7 +1066,7 @@ html {
 
 /* Media query cho tablet */
 @media (min-width: 769px) and (max-width: 1024px) {
-  /* Bỏ viền và background button menu trên tablet */
+  /* Bá» viá»n vÃ  background button menu trÃªn tablet */
   .nav-link {
     border: none !important;
     box-shadow: none !important;
@@ -1083,7 +1083,7 @@ html {
     -webkit-backdrop-filter: none !important;
   }
   
-  /* About image spacing trên tablet */
+  /* About image spacing trÃªn tablet */
   .about-image-container {
     margin-bottom: 2.5rem;
   }
@@ -1456,248 +1456,248 @@ html {
   }
 }
 
-/* ===== HIỆU ỨNG BÔNG TUYẾT RƠI ===== */
+/* ===== HIá»†U á»¨NG BÃ”NG TUYáº¾T RÆ I ===== */
 
-/* Container bông tuyết */
-.snow-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 1;
-  overflow: hidden;
-  transition: opacity 0.5s ease-in-out;
-}
+/* Container bÃ´ng tuyáº¿t */
+/* .snow-container { */
+  /* position: fixed; */
+  /* top: 0; */
+  /* left: 0; */
+  /* width: 100%; */
+  /* height: 100%; */
+  /* pointer-events: none; */
+  /* z-index: 1; */
+  /* overflow: hidden; */
+  /* transition: opacity 0.5s ease-in-out; */
+/* } */
 
-/* Bông tuyết cơ bản */
-.snowflake {
-  position: absolute;
-  top: -10px;
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 1rem;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-fill-mode: forwards;
-  user-select: none;
-}
+/* /* BÃ´ng tuyáº¿t cÆ¡ báº£n */ */
+/* .snowflake { */
+  /* position: absolute; */
+  /* top: -10px; */
+  /* color: rgba(255, 255, 255, 0.9); */
+  /* font-size: 1rem; */
+  /* animation-timing-function: linear; */
+  /* animation-iteration-count: infinite; */
+  /* animation-fill-mode: forwards; */
+  /* user-select: none; */
+/* } */
 
-/* Các kích thước bông tuyết khác nhau */
-.snowflake.tiny {
-  font-size: 0.5rem;
-  opacity: 0.6;
-}
+/* /* CÃ¡c kÃ­ch thÆ°á»›c bÃ´ng tuyáº¿t khÃ¡c nhau */ */
+/* .snowflake.tiny { */
+  /* font-size: 0.5rem; */
+  /* opacity: 0.6; */
+/* } */
 
-.snowflake.small {
-  font-size: 0.8rem;
-  opacity: 0.7;
-}
+/* .snowflake.small { */
+  /* font-size: 0.8rem; */
+  /* opacity: 0.7; */
+/* } */
 
-.snowflake.medium {
-  font-size: 1.1rem;
-  opacity: 0.8;
-}
+/* .snowflake.medium { */
+  /* font-size: 1.1rem; */
+  /* opacity: 0.8; */
+/* } */
 
-.snowflake.large {
-  font-size: 1.4rem;
-  opacity: 0.9;
-}
+/* .snowflake.large { */
+  /* font-size: 1.4rem; */
+  /* opacity: 0.9; */
+/* } */
 
-.snowflake.xlarge {
-  font-size: 1.8rem;
-  opacity: 1;
-}
+/* .snowflake.xlarge { */
+  /* font-size: 1.8rem; */
+  /* opacity: 1; */
+/* } */
 
-/* Animation rơi với hiệu ứng gió - Pattern 1: Gió nhẹ */
-@keyframes snowfall-wind-1 {
-  0% {
-    transform: translateX(0) translateY(-10px) rotate(0deg);
-  }
-  25% {
-    transform: translateX(5px) translateY(25vh) rotate(90deg);
-  }
-  50% {
-    transform: translateX(-3px) translateY(50vh) rotate(180deg);
-  }
-  75% {
-    transform: translateX(7px) translateY(75vh) rotate(270deg);
-  }
-  100% {
-    transform: translateX(0) translateY(110vh) rotate(360deg);
-  }
-}
+/* /* Animation rÆ¡i vá»›i hiá»‡u á»©ng giÃ³ - Pattern 1: GiÃ³ nháº¹ */ */
+/* @keyframes snowfall-wind-1 { */
+  /* 0% { */
+    /* transform: translateX(0) translateY(-10px) rotate(0deg); */
+  /* } */
+  /* 25% { */
+    /* transform: translateX(5px) translateY(25vh) rotate(90deg); */
+  /* } */
+  /* 50% { */
+    /* transform: translateX(-3px) translateY(50vh) rotate(180deg); */
+  /* } */
+  /* 75% { */
+    /* transform: translateX(7px) translateY(75vh) rotate(270deg); */
+  /* } */
+  /* 100% { */
+    /* transform: translateX(0) translateY(110vh) rotate(360deg); */
+  /* } */
+/* } */
 
-/* Animation rơi với hiệu ứng gió - Pattern 2: Gió trung bình */
-@keyframes snowfall-wind-2 {
-  0% {
-    transform: translateX(0) translateY(-10px) rotate(0deg);
-  }
-  20% {
-    transform: translateX(-8px) translateY(20vh) rotate(72deg);
-  }
-  40% {
-    transform: translateX(10px) translateY(40vh) rotate(144deg);
-  }
-  60% {
-    transform: translateX(-5px) translateY(60vh) rotate(216deg);
-  }
-  80% {
-    transform: translateX(12px) translateY(80vh) rotate(288deg);
-  }
-  100% {
-    transform: translateX(-3px) translateY(110vh) rotate(360deg);
-  }
-}
+/* /* Animation rÆ¡i vá»›i hiá»‡u á»©ng giÃ³ - Pattern 2: GiÃ³ trung bÃ¬nh */ */
+/* @keyframes snowfall-wind-2 { */
+  /* 0% { */
+    /* transform: translateX(0) translateY(-10px) rotate(0deg); */
+  /* } */
+  /* 20% { */
+    /* transform: translateX(-8px) translateY(20vh) rotate(72deg); */
+  /* } */
+  /* 40% { */
+    /* transform: translateX(10px) translateY(40vh) rotate(144deg); */
+  /* } */
+  /* 60% { */
+    /* transform: translateX(-5px) translateY(60vh) rotate(216deg); */
+  /* } */
+  /* 80% { */
+    /* transform: translateX(12px) translateY(80vh) rotate(288deg); */
+  /* } */
+  /* 100% { */
+    /* transform: translateX(-3px) translateY(110vh) rotate(360deg); */
+  /* } */
+/* } */
 
-/* Animation rơi với hiệu ứng gió - Pattern 3: Gió mạnh */
-@keyframes snowfall-wind-3 {
-  0% {
-    transform: translateX(0) translateY(-10px) rotate(0deg);
-  }
-  30% {
-    transform: translateX(15px) translateY(30vh) rotate(108deg);
-  }
-  60% {
-    transform: translateX(-12px) translateY(60vh) rotate(216deg);
-  }
-  100% {
-    transform: translateX(8px) translateY(110vh) rotate(324deg);
-  }
-}
+/* /* Animation rÆ¡i vá»›i hiá»‡u á»©ng giÃ³ - Pattern 3: GiÃ³ máº¡nh */ */
+/* @keyframes snowfall-wind-3 { */
+  /* 0% { */
+    /* transform: translateX(0) translateY(-10px) rotate(0deg); */
+  /* } */
+  /* 30% { */
+    /* transform: translateX(15px) translateY(30vh) rotate(108deg); */
+  /* } */
+  /* 60% { */
+    /* transform: translateX(-12px) translateY(60vh) rotate(216deg); */
+  /* } */
+  /* 100% { */
+    /* transform: translateX(8px) translateY(110vh) rotate(324deg); */
+  /* } */
+/* } */
 
-/* Animation rơi với hiệu ứng gió - Pattern 4: Gió xoáy */
-@keyframes snowfall-wind-4 {
-  0% {
-    transform: translateX(0) translateY(-10px) rotate(0deg);
-  }
-  25% {
-    transform: translateX(-10px) translateY(25vh) rotate(90deg);
-  }
-  50% {
-    transform: translateX(18px) translateY(50vh) rotate(180deg);
-  }
-  75% {
-    transform: translateX(-15px) translateY(75vh) rotate(270deg);
-  }
-  100% {
-    transform: translateX(5px) translateY(110vh) rotate(360deg);
-  }
-}
+/* /* Animation rÆ¡i vá»›i hiá»‡u á»©ng giÃ³ - Pattern 4: GiÃ³ xoÃ¡y */ */
+/* @keyframes snowfall-wind-4 { */
+  /* 0% { */
+    /* transform: translateX(0) translateY(-10px) rotate(0deg); */
+  /* } */
+  /* 25% { */
+    /* transform: translateX(-10px) translateY(25vh) rotate(90deg); */
+  /* } */
+  /* 50% { */
+    /* transform: translateX(18px) translateY(50vh) rotate(180deg); */
+  /* } */
+  /* 75% { */
+    /* transform: translateX(-15px) translateY(75vh) rotate(270deg); */
+  /* } */
+  /* 100% { */
+    /* transform: translateX(5px) translateY(110vh) rotate(360deg); */
+  /* } */
+/* } */
 
-/* Animation rơi với hiệu ứng gió - Pattern 5: Gió dao động */
-@keyframes snowfall-wind-5 {
-  0% {
-    transform: translateX(0) translateY(-10px) rotate(0deg);
-  }
-  20% {
-    transform: translateX(12px) translateY(20vh) rotate(72deg);
-  }
-  40% {
-    transform: translateX(-18px) translateY(40vh) rotate(144deg);
-  }
-  60% {
-    transform: translateX(20px) translateY(60vh) rotate(216deg);
-  }
-  80% {
-    transform: translateX(-8px) translateY(80vh) rotate(288deg);
-  }
-  100% {
-    transform: translateX(3px) translateY(110vh) rotate(360deg);
-  }
-}
+/* /* Animation rÆ¡i vá»›i hiá»‡u á»©ng giÃ³ - Pattern 5: GiÃ³ dao Ä‘á»™ng */ */
+/* @keyframes snowfall-wind-5 { */
+  /* 0% { */
+    /* transform: translateX(0) translateY(-10px) rotate(0deg); */
+  /* } */
+  /* 20% { */
+    /* transform: translateX(12px) translateY(20vh) rotate(72deg); */
+  /* } */
+  /* 40% { */
+    /* transform: translateX(-18px) translateY(40vh) rotate(144deg); */
+  /* } */
+  /* 60% { */
+    /* transform: translateX(20px) translateY(60vh) rotate(216deg); */
+  /* } */
+  /* 80% { */
+    /* transform: translateX(-8px) translateY(80vh) rotate(288deg); */
+  /* } */
+  /* 100% { */
+    /* transform: translateX(3px) translateY(110vh) rotate(360deg); */
+  /* } */
+/* } */
 
-/* Animation rơi thẳng - không có gió */
-@keyframes snowfall-straight {
-  0% {
-    transform: translateX(0) translateY(-10px) rotate(0deg);
-  }
-  100% {
-    transform: translateX(0) translateY(110vh) rotate(360deg);
-  }
-}
+/* /* Animation rÆ¡i tháº³ng - khÃ´ng cÃ³ giÃ³ */ */
+/* @keyframes snowfall-straight { */
+  /* 0% { */
+    /* transform: translateX(0) translateY(-10px) rotate(0deg); */
+  /* } */
+  /* 100% { */
+    /* transform: translateX(0) translateY(110vh) rotate(360deg); */
+  /* } */
+/* } */
 
-/* Gán animation ngẫu nhiên cho bông tuyết - Thời gian chậm để rơi nhẹ nhàng */
-.snowflake:nth-child(7n+1) { 
-  animation: snowfall-wind-1 8s linear infinite;
-}
-.snowflake:nth-child(7n+2) { 
-  animation: snowfall-wind-2 10s linear infinite;
-}
-.snowflake:nth-child(7n+3) { 
-  animation: snowfall-wind-3 7s linear infinite;
-}
-.snowflake:nth-child(7n+4) { 
-  animation: snowfall-wind-4 9s linear infinite;
-}
-.snowflake:nth-child(7n+5) { 
-  animation: snowfall-wind-5 6s linear infinite;
-}
-.snowflake:nth-child(7n+6) { 
-  animation: snowfall-straight 12s linear infinite;
-}
-.snowflake:nth-child(7n) { 
-  animation: snowfall-wind-1 5s linear infinite;
-}
+/* /* GÃ¡n animation ngáº«u nhiÃªn cho bÃ´ng tuyáº¿t - Thá»i gian cháº­m Ä‘á»ƒ rÆ¡i nháº¹ nhÃ ng */ */
+/* .snowflake:nth-child(7n+1) { */
+  /* animation: snowfall-wind-1 8s linear infinite; */
+/* } */
+/* .snowflake:nth-child(7n+2) { */
+  /* animation: snowfall-wind-2 10s linear infinite; */
+/* } */
+/* .snowflake:nth-child(7n+3) { */
+  /* animation: snowfall-wind-3 7s linear infinite; */
+/* } */
+/* .snowflake:nth-child(7n+4) { */
+  /* animation: snowfall-wind-4 9s linear infinite; */
+/* } */
+/* .snowflake:nth-child(7n+5) { */
+  /* animation: snowfall-wind-5 6s linear infinite; */
+/* } */
+/* .snowflake:nth-child(7n+6) { */
+  /* animation: snowfall-straight 12s linear infinite; */
+/* } */
+/* .snowflake:nth-child(7n) { */
+  /* animation: snowfall-wind-1 5s linear infinite; */
+/* } */
 
-/* Hiệu ứng phát sáng cho bông tuyết */
-.snowflake {
-  text-shadow: 
-    0 0 3px rgba(255, 255, 255, 0.8),
-    0 0 6px rgba(255, 255, 255, 0.6),
-    0 0 9px rgba(255, 255, 255, 0.4);
-  /* Đảm bảo animation restart đúng cách */
-  animation-fill-mode: forwards;
-  animation-iteration-count: infinite;
-}
+/* /* Hiá»‡u á»©ng phÃ¡t sÃ¡ng cho bÃ´ng tuyáº¿t */ */
+/* .snowflake { */
+  /* text-shadow: */
+    /* 0 0 3px rgba(255, 255, 255, 0.8), */
+    /* 0 0 6px rgba(255, 255, 255, 0.6), */
+    /* 0 0 9px rgba(255, 255, 255, 0.4); */
+  /* /* Äáº£m báº£o animation restart Ä‘Ãºng cÃ¡ch */ */
+  /* animation-fill-mode: forwards; */
+  /* animation-iteration-count: infinite; */
+/* } */
 
-/* Class để restart animation */
-.snowflake.restart {
-  animation: none;
-}
+/* /* Class Ä‘á»ƒ restart animation */ */
+/* .snowflake.restart { */
+  /* animation: none; */
+/* } */
 
-.snowflake.restart.active {
-  animation: inherit;
-}
+/* .snowflake.restart.active { */
+  /* animation: inherit; */
+/* } */
 
-/* Hiệu ứng fade out nhẹ nhàng khi bông tuyết biến mất */
-.snowflake.fade-out {
-  animation: fadeOut 3s ease-out forwards;
-}
+/* /* Hiá»‡u á»©ng fade out nháº¹ nhÃ ng khi bÃ´ng tuyáº¿t biáº¿n máº¥t */ */
+/* .snowflake.fade-out { */
+  /* animation: fadeOut 3s ease-out forwards; */
+/* } */
 
-@keyframes fadeOut {
-  0% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(0.3);
-  }
-}
+/* @keyframes fadeOut { */
+  /* 0% { */
+    /* opacity: 1; */
+    /* transform: scale(1); */
+  /* } */
+  /* 100% { */
+    /* opacity: 0; */
+    /* transform: scale(0.3); */
+  /* } */
+/* } */
 
-/* Responsive cho mobile */
-@media (max-width: 768px) {
-  .snowflake {
-    font-size: 0.8rem;
-  }
+/* /* Responsive cho mobile */ */
+/* @media (max-width: 768px) { */
+  /* .snowflake { */
+    /* font-size: 0.8rem; */
+  /* } */
   
-  .snowflake.tiny { font-size: 0.4rem; }
-  .snowflake.small { font-size: 0.6rem; }
-  .snowflake.medium { font-size: 0.9rem; }
-  .snowflake.large { font-size: 1.1rem; }
-  .snowflake.xlarge { font-size: 1.3rem; }
+  /* .snowflake.tiny { font-size: 0.4rem; } */
+  /* .snowflake.small { font-size: 0.6rem; } */
+  /* .snowflake.medium { font-size: 0.9rem; } */
+  /* .snowflake.large { font-size: 1.1rem; } */
+  /* .snowflake.xlarge { font-size: 1.3rem; } */
   
-  /* Giảm cường độ gió trên mobile */
-  @keyframes snowfall-wind-1 {
-    0% { transform: translateX(0) translateY(-10px) rotate(0deg); }
-    50% { transform: translateX(5px) translateY(50vh) rotate(180deg); }
-    100% { transform: translateX(0) translateY(100vh) rotate(360deg); }
-  }
+  /* /* Giáº£m cÆ°á»ng Ä‘á»™ giÃ³ trÃªn mobile */ */
+  /* @keyframes snowfall-wind-1 { */
+    /* 0% { transform: translateX(0) translateY(-10px) rotate(0deg); } */
+    /* 50% { transform: translateX(5px) translateY(50vh) rotate(180deg); } */
+    /* 100% { transform: translateX(0) translateY(100vh) rotate(360deg); } */
+  /* } */
   
-  @keyframes snowfall-wind-2 {
-    0% { transform: translateX(0) translateY(-10px) rotate(0deg); }
-    50% { transform: translateX(-5px) translateY(50vh) rotate(180deg); }
-    100% { transform: translateX(0) translateY(100vh) rotate(360deg); }
-  }
+  /* @keyframes snowfall-wind-2 { */
+    /* 0% { transform: translateX(0) translateY(-10px) rotate(0deg); } */
+    /* 50% { transform: translateX(-5px) translateY(50vh) rotate(180deg); } */
+    /* 100% { transform: translateX(0) translateY(100vh) rotate(360deg); } */
+  /* } */
 }
